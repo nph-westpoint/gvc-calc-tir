@@ -140,7 +140,7 @@ if current_file is not None:
             ## show that the time_shift of the data yields a timedelta
             data['time_delta'] = data[date_col].shift(-1)-data[date_col]
             median_time_delta = data['time_delta'].map(lambda x:x.total_seconds()//60).median()
-            mgv = data[glucose_col].mean()
+            mgv = data[glucose_col].replace("",None).dropna().mean()
             
             st.write(f"Median time_delta in your data is: {median_time_delta:.1f} minutes.")
             
