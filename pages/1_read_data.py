@@ -139,7 +139,6 @@ if current_file is not None:
             data[date_col] = pd.to_datetime(data[date_col])
             ## show that the time_shift of the data yields a timedelta
             data['time_delta'] = data[date_col].shift(-1)-data[date_col]
-            st.write(data)
             median_time_delta = data['time_delta'].map(lambda x:x.total_seconds()//60).median()
             mgv = data[glucose_col].replace("",None).dropna().mean()
             
